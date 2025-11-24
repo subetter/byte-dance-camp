@@ -1,0 +1,39 @@
+.filterPanel {
+    margin-bottom: 24px;
+}
+
+.filterSection {
+    margin-bottom: 24px;
+}
+
+.filterSection:last-child {
+    margin-bottom: 0;
+}
+
+.filterTitle {
+    font-weight: 500;
+    margin-bottom: 12px;
+    color: #1d2129;
+}
+
+.priceInputs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.priceSeparator {
+    color: #86909c;
+}
+
+.priceActions {
+    display: flex;
+    gap: 8px;
+}
+
+@media (max-width: 768px) {
+    .filterPanel {
+        margin-bottom: 16px;
+    }
+}

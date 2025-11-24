@@ -1,0 +1,201 @@
+.layout {
+    min-height: 100vh;
+    background: #f5f5f5;
+}
+
+.content {
+    padding: 24px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.mainSection {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+    background: #fff;
+    padding: 32px;
+    border-radius: 8px;
+}
+
+.imageSection {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.mainImage {
+    width: 100%;
+    aspect-ratio: 1;
+    background: #f5f5f5;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.carousel {
+    width: 100%;
+    height: 100%;
+}
+
+.carousel :global(.arco-carousel) {
+    width: 100%;
+    height: 100%;
+}
+
+.carousel :global(.arco-carousel-item) {
+    width: 100%;
+    height: 100%;
+}
+
+.carousel :global(.arco-carousel-list) {
+    width: 100%;
+    height: 100%;
+}
+
+.carousel :global(.arco-carousel-slide) {
+    width: 100%;
+    height: 100%;
+}
+
+.carousel :global(.arco-carousel-slide > *) {
+    width: 100%;
+    height: 100%;
+}
+
+.productImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* 确保 Arco Design Image 组件占满容器 */
+.productImage :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.thumbnails {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+}
+
+.thumbnail {
+    width: 80px;
+    height: 80px;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: border-color 0.2s;
+}
+
+.thumbnail.active {
+    border-color: #165dff;
+}
+
+.thumbnailImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.infoSection {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #1d2129;
+    line-height: 32px;
+    margin: 0;
+}
+
+.price {
+    font-size: 32px;
+    font-weight: 600;
+    color: #f53f3f;
+}
+
+.description {
+    font-size: 14px;
+    color: #86909c;
+    line-height: 22px;
+}
+
+.recommendedSection {
+    margin-top: 48px;
+}
+
+.recommendedTitle {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1d2129;
+    margin-bottom: 24px;
+}
+
+.recommendedGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 24px;
+}
+
+.loadingWrapper,
+.errorWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+}
+
+@media (max-width: 1024px) {
+    .mainSection {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .imageSection {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .content {
+        padding: 16px;
+    }
+
+    .mainSection {
+        padding: 16px;
+        gap: 24px;
+    }
+
+    .title {
+        font-size: 20px;
+    }
+
+    .price {
+        font-size: 28px;
+    }
+
+    .recommendedGrid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 16px;
+    }
+
+    .thumbnail {
+        width: 60px;
+        height: 60px;
+    }
+}

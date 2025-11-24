@@ -1,0 +1,59 @@
+.specSelector {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.specSection {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.specLabel {
+    font-weight: 500;
+    color: #1d2129;
+    font-size: 14px;
+}
+
+.radioGroup {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.radioItem {
+    min-width: 60px;
+}
+
+.stockInfo {
+    color: #86909c;
+    font-size: 14px;
+}
+
+.quantitySection {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.quantityLabel {
+    font-weight: 500;
+    color: #1d2129;
+}
+
+.addButton {
+    width: 100%;
+    height: 48px;
+    font-size: 16px;
+}
+
+@media (max-width: 768px) {
+    .specSelector {
+        gap: 20px;
+    }
+
+    .addButton {
+        height: 44px;
+    }
+}
