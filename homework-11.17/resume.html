@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>吴娅苏 - 个人简历</title>
+    <style>
+        /* 基础样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+
+        :root {
+            --primary-color: #097cef;
+            --secondary-color: #66b3e7;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --light-text: #7f8c8d;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* 布局样式 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .profile-section {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .profile-section {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .sidebar {
+            background: white;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .main-content {
+            background: white;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        section {
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-color);
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        h4 {
+            font-size: 1.1rem;
+            color: var(--dark-color);
+            margin-bottom: 5px;
+        }
+
+        /* 列表样式 */
+        ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+
+        ol {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+            position: relative;
+        }
+
+        ul>li:before {
+            content: "•";
+            color: var(--secondary-color);
+            font-weight: bold;
+            position: absolute;
+            left: -15px;
+        }
+
+        /* 标签样式 */
+        .tag {
+            display: inline-block;
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+
+        /* 时间线样式 */
+        .timeline-item {
+            margin-bottom: 25px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .timeline-item:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 12px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--secondary-color);
+        }
+
+        .timeline-item:last-child:after {
+            display: none;
+        }
+
+        .date {
+            color: var(--light-text);
+            font-style: italic;
+            margin-bottom: 5px;
+        }
+
+        /* 项目经历折叠功能 */
+        .project-item {
+            margin-bottom: 15px;
+            border: 1px solid var(--light-color);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        .project-header {
+            padding: 15px;
+            background-color: var(--light-color);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .project-header:hover {
+            background-color: #dfe6e9;
+        }
+
+        .project-content {
+            padding: 0 15px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .project-content.expanded {
+            padding: 15px;
+            max-height: 1000px;
+        }
+
+        .toggle-icon {
+            transition: var(--transition);
+        }
+
+        .toggle-icon.rotated {
+            transform: rotate(-90deg);
+        }
+
+        /* 联系信息样式 */
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* 技能标签样式 */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* 打印样式 */
+        @media print {
+            body {
+                background-color: white;
+            }
+
+            .container {
+                max-width: 100%;
+                padding: 0;
+                display: flex;
+            }
+
+            header {
+                box-shadow: none;
+                border-bottom: 2px solid var(--primary-color);
+            }
+
+            .sidebar,
+            .main-content {
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+
+            .project-content {
+                max-height: none !important;
+                display: block !important;
+            }
+
+            .toggle-icon {
+                display: none;
+            }
+        }
+
+        .footer {
+            text-align: center;
+            color: var(--light-text);
+            font-size: 0.9rem;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap;">
+                <div class="description" style="flex:1; min-width:220px;">
+                    <h1>吴娅苏</h1>
+                    <p>硕士研究生在读 | 前端开发工程师</p>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <span>📱</span>
+                            <span>13099863927</span>
+                        </div>
+                        <div class="contact-item">
+                            <span>✉️</span>
+                            <span>3077533608@qq.com</span>
+                        </div>
+                        <div class="contact-item" style="min-width:0;">
+                            <span>🌐</span>
+                            <span
+                                style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap; display:inline-block; max-width:420px;">
+                                项目演示地址: <a href="https://www.yuque.com/yasuwu/cgl1na/la2v39shkydl3u0i?singleDoc"
+                                    target="_blank">https://www.yuque.com/yasuwu/cgl1na/la2v39shkydl3u0i?singleDoc</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <img src="./me.jpg" alt="Profile Picture" width="180px" style="object-fit:cover;">
+            </div>
+        </header>
+
+        <div class="profile-section">
+            <aside class="sidebar">
+                <section id="basic-info">
+                    <h2>基本信息</h2>
+                    <ul>
+                        <li><strong>年龄:</strong> 23岁</li>
+                        <li><strong>籍贯:</strong> 云南曲靖</li>
+                        <li><strong>民族:</strong> 汉族</li>
+                        <li><strong>性别:</strong> 女</li>
+                        <li><strong>微信小程序开发:</strong> ss16712</li>
+                    </ul>
+                </section>
+
+                <section id="skills">
+                    <h2>专业技能</h2>
+                    <div class="skills-container">
+                        <span class="skill-tag">HTML5/CSS3/JavaScript</span>
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">Vue3</span>
+                        <span class="skill-tag">Element-UI/Ant Design</span>
+                        <span class="skill-tag">Echarts/DataV/D3.js</span>
+                        <span class="skill-tag">Vite/Webpack</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">微信小程序开发</span>
+                        <span class="skill-tag">SpringBoot</span>
+                        <span class="skill-tag">MySQL</span>
+                    </div>
+                </section>
+
+                <section id="awards">
+                    <h2>获奖情况</h2>
+                    <ul>
+                        <li>西北工业大学燕宝奖学金</li>
+                        <li>西北工业大学研究生一等学业奖学金</li>
+                        <li>云南大学校级一等奖学金(连续三年)</li>
+                        <li>云南大学优秀班干部奖学金</li>
+                        <li>国家励志奖学金</li>
+                        <li>2022团体程序设计天梯赛团队冠军</li>
+                        <li>第十四届大学生服务外包创新创业大赛中部区域赛二等奖、国家级三等奖</li>
+                        <li>第九届互联网+大学生创新创业大赛省级银奖</li>
+                        <li>2022中国高校计算机大赛人工智能创意赛全国总决赛二等奖</li>
+                    </ul>
+                </section>
+            </aside>
+
+            <main class="main-content">
+                <section id="education">
+                    <h2>教育经历</h2>
+                    <div class="timeline-item">
+                        <h3>西北工业大学 (985双一流)</h3>
+                        <h4>软件工程硕士</h4>
+                        <div class="date">2024-09 ~ 2027-06 | 软件学院 西安</div>
+                        <ul>
+                            <li>主修课程: Machine Learning、Network and Information Security、数理统计、数理逻辑与程序设计等</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-item">
+                        <h3>云南大学 (211双一流)</h3>
+                        <h4>软件工程本科</h4>
+                        <div class="date">2020-09 ~ 2024-06 | 软件学院 昆明</div>
+                        <ul>
+                            <li>GPA: 3.8/4.0 (专业前4%，专业排名4/107)</li>
+                            <li>英语: CET-4: 550 CET-6: 508</li>
+                            <li>主修课程: 数据结构、计算机网络、操作系统、计算机组成原理、数据库、软件工程概论等</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="internship">
+                    <h2>实习经历</h2>
+                    <div class="timeline-item">
+                        <h3>腾讯科技(深圳)有限公司</h3>
+                        <h4>WXG微信支付前端实习生</h4>
+                        <div class="date">2025-05 ~ 2025-08 | 深圳</div>
+                        <ol>
+                            <li>小程序端开发: 参与开发微信支付摇优惠小程序，完成瓶子优惠、喜欢的商家动线、动线优化、附近优惠等功能点的开发</li>
+                            <li>OP端开发: 独立完成op端智慧经营运营平台-活动关联门店模块，使用ts开发node服务，基于Vue框架实现门店关联UI</li>
+                            <li>规则可视化工具开发: 将团队内的券价值展示规则工具库函数可视化，支持一键导入csv，提高组内开发效率</li>
+                        </ol>
+                    </div>
+
+                    <div class="timeline-item">
+                        <h3>普洱市天生祥商业发展有限责任公司</h3>
+                        <div class="date">2023-02 ~ 2023-04</div>
+                        <ol>
+                            <li>小程序端开发: 用微信开发者工具，开发溯源小程序，并在超市菜品上提供小程序码，供顾客扫码溯源</li>
+                            <li>可视化端开发: 基于Vue3+DataV+ECharts开发农品数字化追溯大屏，在超市菜品区展示</li>
+                            <li>Web端开发: 使用Element plus组件开发web管理端的批次管理，基地管理，大棚管理等</li>
+                            <li>服务端开发: 使用SpringBoot+MybatisPlus框架开发前端所需接口</li>
+                        </ol>
+                    </div>
+                </section>
+
+                <section id="projects">
+                    <h2>项目经历</h2>
+
+                    <div class="project-item">
+                        <div class="project-header">
+                            <h3>军事知识图谱可视化系统</h3>
+                            <span class="toggle-icon">◀</span>
+                        </div>
+                        <div class="project-content">
+                            <p><strong>项目链接:</strong> <a href="https://gitee.com/wu-yasu/software-modeling.git"
+                                    target="_blank">https://gitee.com/wu-yasu/software-modeling.git</a></p>
+                            <p><strong>项目描述:</strong> 用户可选择书籍，系统动态构建知识图谱、统计节点数据动态可视化展示，用户可对书中知识进行提问。</p>
+                            <p><strong>主要职责:</strong></p>
+                            <ol>
+                                <li>可视化大屏开发: 使用Vue3搭建项目框架，结合DataV组件库开发可视化大屏的布局和样式</li>
+                                <li>书籍选择与动态问答: 开发书籍选择弹窗，加载知识图谱数据等页面，实现动态问答功能</li>
+                                <li>数据动态展示与交互优化: 通过ECharts和D3.js实现数据的动态加载和实时更新</li>
+                                <li>性能优化: 针对大规模知识图谱数据的渲染性能问题，采用数据分片加载和懒加载技术</li>
+                            </ol>
+                            <p><strong>项目成果:</strong> 该项目为服务外包大赛参赛作品，最终获得中部区域赛二等奖，国家级三等奖。</p>
+                        </div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-header">
+                            <h3>基于非智能物联中间件工业传感器数据异常检测系统</h3>
+                            <span class="toggle-icon">◀</span>
+                        </div>
+                        <div class="project-content">
+                            <div class="date">2022-04 ~ 2024-04 | 项目负责人</div>
+                            <p><strong>项目介绍:</strong> 该项目为一项国家级大学生创新创业项目，旨在为云南省的铜合金材料基因工程提供技术支撑和平台支持。</p>
+                            <p><strong>主要工作:</strong> 负责钢铁冶炼工艺参数预测平台和工厂实时作业监控预警平台的前端开发工作。</p>
+                            <p><strong>项目成果:</strong>
+                                该项目参加了大学生"互联网+"创新创业大赛，并获得了省级银奖的荣誉。在"2022中国高校计算机大赛人工智能创意赛"获得全国总决赛二等奖。</p>
+                        </div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-header">
+                            <h3>基于Vue3+Ant Design+Pinia+AI+WebSocket的智能图库平台</h3>
+                            <span class="toggle-icon">◀</span>
+                        </div>
+                        <div class="project-content">
+                            <div class="date">2024-10 ~ 至今 | 前端开发</div>
+                            <p><strong>项目链接:</strong> <a href="https://github.com/subetter/cloud-picture.git"
+                                    target="_blank">https://github.com/subetter/cloud-picture.git</a></p>
+                            <p><strong>项目介绍:</strong> 分为公共图库、私有图库和团队共享图库三大模块。用户可在平台上传和检索图片。</p>
+                            <p><strong>主要工作:</strong></p>
+                            <ol>
+                                <li>页面开发: 自主开发包含全局页面布局，导航菜单和通用组件的前端模板</li>
+                                <li>前后端联调: 使用openapi-typescript-codegen工具根据后端swagger接口文档自动生成请求后端的代码</li>
+                                <li>图片搜索及优化: 支持关键词、标签分类、颜色搜索、以图搜图等多维度检索</li>
+                                <li>AI扩图: 对接后端提供的AI大模型接口</li>
+                                <li>空间分析: 基于ECharts封装了多个分析图表组件</li>
+                                <li>实时协作: 基于WebSocket事件驱动实现图片协同编辑</li>
+                            </ol>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+        <div class="footer">
+            个人简历持续更新中...
+        </div>
+
+    </div>
+
+    <script>
+        // 项目经历展开/折叠功能
+        document.addEventListener('DOMContentLoaded', function () {
+            const projectHeaders = document.querySelectorAll('.project-header');
+
+            projectHeaders.forEach(header => {
+                header.addEventListener('click', function () {
+                    const content = this.nextElementSibling;
+                    const icon = this.querySelector('.toggle-icon');
+
+                    // 切换内容显示
+                    content.classList.toggle('expanded');
+
+                    // 旋转图标
+                    icon.classList.toggle('rotated');
+                });
+            });
+
+            // 默认展开第一个项目
+            if (projectHeaders.length > 0) {
+                projectHeaders[0].click();
+            }
+        });
+    </script>
+</body>
+
+</html>
